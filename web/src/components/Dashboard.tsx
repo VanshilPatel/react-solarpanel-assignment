@@ -6,8 +6,7 @@ import PanelGrid from "./PanelGrid";
 import PanelSummary from "./PanelSummary";
 
 const Dashboard: React.FC<DashboardProps> = ({ panels }) => {
-  const totalEnergy = panels
-    .reduce(
+  const totalEnergy = panels.reduce(
       (acc, panel) =>
         acc + parseFloat(panel.energy.replace("kWh", "").replace(",", "")),
       0
@@ -39,10 +38,10 @@ const Dashboard: React.FC<DashboardProps> = ({ panels }) => {
   const averageWattage = (totalWattage / panels.length)?.toFixed(2);
 
   return (
-    <div className="p-4">
+    <div className="p-3">
       <div className=" grid grid-cols-1 md:grid-cols-8 gap-4">
         {/* Energy Overview Card */}
-        <div className="col-span-4">
+        <div className="col-span-4 ">
           <EnergySummary
             totalEnergy={totalEnergy}
             averageVoltage={averageVoltage}
@@ -56,8 +55,8 @@ const Dashboard: React.FC<DashboardProps> = ({ panels }) => {
         </div>
       </div>
       {/* Panel Monitoring Card */}
-      <div className="bg-white p-4 mt-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-md">
-        <h2 className="text-[20px] font-semibold mb-4">Panel Monitoring</h2>
+      <div className="bg-white p-2 mt-1 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-md">
+        <h2 className="text-[20px] font-semibold mb-1">Panel Monitoring</h2>
         <PanelGrid panels={panels} />
       </div>
     </div>
